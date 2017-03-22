@@ -1,3 +1,4 @@
+/*
 var form = document.getElementById('form');
 //xmlhttp = new XMLHttpRequest();
 form.addEventListener("submit", getResponse, false);
@@ -28,7 +29,6 @@ function getResponse(e)
     console.log(cont + " - " + palabras + " - " + Math.round((cont/palabras) * 100));
     console.log(b);
 }
-/*
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -44,3 +44,4 @@ function getKeywords(data)
     data = JSON.parse(data);
     console.log(data['tags'].length);
 }
+*/

@@ -26,9 +26,8 @@ var preguntas = {
 	//Inician las preguntas
 	//---------------------------
 
-	"0": ["¿Cómo se saluda?"],
-	"1": ["¿Cómo se despide?"]
-
+	"0": "¿Cómo se saluda?",
+	"1": "¿Cómo se despide?"
 	//-----------------------------
 	//Fin de la seccion de preguntas
 }
@@ -49,8 +48,8 @@ Ejemplo:
 Si desea asociar mas palabras clave a otras preguntas, realizelo de la misma manera que con la seccion anterior
 
 Ejemplo:
-"0":["palabra clave1","palabra clave2"],
-"1":["palabra clave1","palabra clave2"]
+"0":"palabra clave1","palabra clave2",
+"1":"palabra clave1","palabra clave2"
 
 Es CRUCIAL que la ultima pregunta no tenga comas(,).
 
