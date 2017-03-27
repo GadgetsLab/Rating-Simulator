@@ -4,7 +4,7 @@ var totalAnswers;
 var b = [];
 var answer = [];
 var functions = {
-	"showQuestions": function(){
+	"showQuestions": function(){ // This method print the questions on the template
 		var count = Object.keys(preguntas).length;
 		var container = document.getElementById("form");
 		var content;
@@ -20,8 +20,7 @@ var functions = {
 		}	
 		container.appendChild(button);	
 	},
-	"getResponse": function (e)
-	{
+	"getResponse": function (e){ //This method is the "core" project.
 		console.log("Está entrando en getResponse");
 		/*
     	e.preventDefault();
@@ -48,7 +47,7 @@ var functions = {
         }
         */
     },
-	"showAnswers": function(){
+	"showAnswers": function(){ //This method print the answers with the keywords printed in "red"
 		console.log("Está entrando en showAnswer");
 		/*
 		for (var i = 0;i < totalAnswer.length; i++) {
