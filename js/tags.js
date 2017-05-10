@@ -56,7 +56,7 @@ Es CRUCIAL que la ultima pregunta no tenga comas(,).
 */
 var respuestas = {
   //Inicia la asociación de palabras clave
-  //----------------------------------------	
+  //---------------------------------------- 	
   "0": ["hola", "cómo"],
   "1": ["adios", "vemos"]
   //----------------------------------------

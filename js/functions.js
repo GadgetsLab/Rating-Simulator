@@ -1,8 +1,5 @@
 var cont = 0; 
 var palabras = 0;
-var totalAnswers;
-var b = [];
-var answer = [];
 var functions = {
 	"showQuestions": function(){ // This method print the questions on the template
 		var count = Object.keys(preguntas).length;
@@ -20,18 +17,18 @@ var functions = {
 		}	
 		container.appendChild(button);	
 	},
-	"getResponse": function (e){ //This method is the "core" project.
-		console.log("Está entrando en getResponse");
+	"getResponse": function (ta){ //This method is the "core" project.
 		/*
-    	e.preventDefault();
-    	totalAnswers = document.getElementsByClassName('question');
+		console.log("Está entrando en getResponse");
+        */
+        console.log(ta);
+        //totalAnswers = document.getElementsByClassName('question');
     	var answer= [];
     	var b = [];
-    	for(var i = 0; i < totalAnswers.length; i++){
-            var a = totalAnswers[i].children[1]; //value
+    	for(var i = 0; i < ta.length; i++){
+            var a = ta[i].children[1];
             b[i] = a.children[0].value.toLowerCase();
             answer[i] = b[i].replace(',','').split(' ');
-            //c[i] = totalAnswers[i].children[1].value.toLowerCase();
         }
     
     	for(var i = 0; i < answer.length; i++) {
@@ -45,14 +42,15 @@ var functions = {
                 palabras++;
             }
         }
-        */
+
+        return b;
     },
-	"showAnswers": function(){ //This method print the answers with the keywords printed in "red"
-		console.log("Está entrando en showAnswer");
+	"showAnswers": function(ta,ba){ //This method print the answers with the keywords printed in "red"
 		/*
-		for (var i = 0;i < totalAnswer.length; i++) {
-			totalAnswer[i].children[1].innerHTML = b[i];
-		}
+		console.log("Está entrando en showAnswer");
 		*/
+		for (var i = 0;i < ta.length; i++) {
+			ta[i].children[1].innerHTML = ba[i];
+		}
 	} 
 }
