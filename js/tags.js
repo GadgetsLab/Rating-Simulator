@@ -26,8 +26,8 @@ var preguntas = {
 	//Inician las preguntas
 	//---------------------------
 
-	"0": "¿Cómo se saluda?",
-	"1": "¿Cómo se despide?"
+	"1": "¿Qué pregunta te dará una respuesta que afianzará tu autoconfianza para tomar decisiones?",
+	"2": "¿Cómo se despide?"
 	//-----------------------------
 	//Fin de la seccion de preguntas
 }
@@ -54,14 +54,38 @@ Ejemplo:
 Es CRUCIAL que la ultima pregunta no tenga comas(,).
 
 */
-var respuestas = {
+var repuesta_correcta = {
+	"1": "¿Quien soy?"
+}
+
+var palabras_claves = {
   //Inicia la asociación de palabras clave
   //---------------------------------------- 	
-  "0": ["hola", "cómo"],
-  "1": ["adios", "vemos"]
+  "1": ["yo", "el", "ser", "persona", "conocerme yo", "mi", "mismo", "conocer el interior", "interior propio", "amor a mí", "propio conocimiento"],
+  "2": ["adios", "vemos"]
   //----------------------------------------
   //Finaliza la asociación de palabras clave
 }
+
+var sugerencia_primera_respuesta = {
+
+	"1":"Las personas deben antes de lanzarse como empresarios, conocer su interior.",
+	"2":"Utiliza esta sugerencia..."
+}
+
+var sugerencia_segunda_respuesta = {
+	"1":"Para un emprendedor lo fundamental esta en saber su ¿Quién soy?, une esta sugerencia a tu respuesta y tendrás un criterio importante para iniciarte como empresario"
+}
+
+var retroalimentacion_parcial = {
+	"1":"Lee con atención esta nueva respuesta que une lo que tienes en mente con la definición real."
+	
+
+}
+
+var retroalimentacion_final = {
+	"1":"Ahora continua a la siguiente pregunta, ya tienes una idea de lo que es Ser emprendedor y recuerda que en los detalles puede estar la diferencia."
+} 
 
 /*
 	Prueba de sincronizacion con git

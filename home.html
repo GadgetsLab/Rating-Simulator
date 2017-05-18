@@ -8,7 +8,22 @@
 </head>
 <body>
   <div class="ed-container">
-    <form action="" id="form">
+    <div class="ed-item base-100" id="answer-1">
+        <label for="response-1">¿Como se saluda?</label><br>
+        <textarea name="response" id="response-1" cols="30" rows="10"></textarea><br>
+        <textarea name="" id="response-1-2" cols="30" rows="10" style="display:none"></textarea>
+        <p class="suggestion-1"></p>
+        <button data-answer = "1" class = "answer-trigger">Responder</button>
+        <button data-next = "2" class = "next-trigger">Siguiente</button>
+    </div>
+    <div class="ed-item base-100 display-none" id="answer-2">
+        <label for="response-2">¿Como se despide?</label><br>
+        <textarea name="response" id="response-1" cols="30" rows="10"></textarea><br>
+        <textarea name="" id="response-2-2" cols="30" rows="10" style="display:none"></textarea>
+        <p class="suggestion-2"></p>
+        <button data-answer = "2" class="answer-trigger">Responder</button>
+        <button data-next ="3">Siguiente</button>      
+    </div>
       <!--
       <fieldset class="question"> 
         <div class="ed-item base 100 web-50">
@@ -23,11 +38,11 @@
         <textarea name="" id="" cols="30" rows="10"></textarea>
       </fieldset>
         -->
-  </form>
+  
   </div>
    <script src="js/tags.js"></script>
    <script src="js/functions.js"></script>
-   <script src="js/questions.js"></script>
+   <script src="js/core.js"></script>
    <!--<script src="js/core.js"></script>-->
 </body>
 </html>

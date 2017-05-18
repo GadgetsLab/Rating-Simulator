@@ -1,9 +1,45 @@
-var form = document.getElementById('form');
-//xmlhttp = new XMLHttpRequest();
-form.addEventListener("submit", getResponse, false);
-cont = 0, palabras = 0;
+var cont = 0;
+var button_next;
+var button = document.getElementsByClassName('answer-trigger');
+button[0].addEventListener("click", function(e){ 
+    e.preventDefault();
+    var data = button[0].getAttribute("data-answer");
+    var answer = document.querySelector("#response-" + data).value;
+    if(cont > 0){
+        answer = document.querySelector("#response-" + data + "-2").value;
+    }
+    if(answer.toLowerCase() == repuesta_correcta[data].toLowerCase()){
+        document.getElementsByClassName("suggestion-" + data)[0].innerHTML = "Tu respuesta es cercana a la acertada y también es válida. Te sugiero asumir esta respuesta para cuando necesites definir el tema que ahora mismo acabas de asimilar. ¡Continua con la evaluación o descansa, si lo prefieres!";
+    }else{
+        //console.log(palabras_claves[data].length);
+        for (var i = 0; i < palabras_claves[data].length; i++) {
+            if(functions.validateWord(answer, palabras_claves[data][i])){
+               document.getElementsByClassName("suggestion-" + data)[0].innerHTML = "En esta respuesta te sugiero releer el contenido del tema anterior, aunque tienes elementos claros otros no los tienes, pues algunas cosas que dices en ella no son acertadas. Enfoca tus criterios y mejora tu conocimiento del tema. ¡Detén la evaluación ahora mismo y vuelve a los contenidos, para luego regresar aquí!"; 
+                functions.disabled(data);
+                functions.showElement("response-"+data+"-2");
+                cont = 1;
+                return false;
+            }
+        }
+
+       
+    }
+});
+
+
+button_next = document.getElementsByClassName('next-trigger');
+button_next[0].addEventListener("click", function(e){ 
+    var data = button_next[0].getAttribute("data-next");
+    //var data_ant = button[0].getAttribute("data-answer");
+    functions.hideElement("answer-" + parseInt(data-1));
+    functions.showElement("answer-" + data);
+});
+
+
+ /*   
 function getResponse(e)
 {
+
     e.preventDefault();
     var totalAnswers = document.getElementsByClassName('question');
     var answer= [];
@@ -32,8 +68,8 @@ function getResponse(e)
     
 /*
     //console.log(cont + " - " + palabras + " - " + Math.round((cont/palabras) * 100));
-*/
 }
+*/
 /*
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {

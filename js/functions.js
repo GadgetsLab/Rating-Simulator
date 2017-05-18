@@ -1,6 +1,23 @@
 var cont = 0; 
 var palabras = 0;
 var functions = {
+	"validateWord": function(response, str){
+		var result = str.indexOf(response);
+		console.log(result);
+		if(result >= 0){
+			return true;
+		}
+		return false;
+	},
+	"disabled": function(data){
+		document.getElementById("response-"+data).setAttribute("disabled", "disabled");
+	},
+	"showElement": function(data){
+		document.getElementById(data).classList.add("display-block");
+	},
+	"hideElement": function(data){
+		document.getElementById(data).classList.add("display-none");
+	},
 	"showQuestions": function(){ // This method print the questions on the template
 		var count = Object.keys(preguntas).length;
 		var container = document.getElementById("form");
