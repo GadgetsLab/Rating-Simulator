@@ -2,8 +2,9 @@ var cont = 0;
 var palabras = 0;
 var functions = {
 	"validateWord": function(response, str){
-		var result = str.indexOf(response);
+		var result = str.toLowerCase().indexOf(response.toLowerCase());
 		console.log(result);
+		console.log(response);
 		if(result >= 0){
 			return true;
 		}
@@ -16,29 +17,51 @@ var functions = {
 		document.getElementById(data).classList.add("display-block");
 	},
 	"hideElement": function(data){
+		console.log("Hide:" + data)
+		document.getElementById(data).classList.remove("display-block");
 		document.getElementById(data).classList.add("display-none");
 	},
 	"showQuestions": function(){ // This method print the questions on the template
 		var count = Object.keys(preguntas).length;
-		var container = document.getElementById("form");
-		var content;
+		var container = document.getElementsByClassName("ed-container");
+		container[0].innerHTML = "Hola";
+		var cont = 2;
+		var classShow = "display-block";
+		var content ="";;
 		var f;
 		var button = document.createElement("button");
-		button.innerHTML = "Responder";
-		for (var i = 0;i < count;i++) {
-			content = "<div class='ed-item base-100 web-50'><p>"+ preguntas[i] +"</p></div> <div class='ed-item base-100 web-50 answer'><textarea id='' cols='30' rows='10'></textarea></div>";
+		//button.innerHTML = "Responder";
+		for (var i = 1;i <= count;i++) {
+			if(i != 1){
+				classShow = "display-none";
+			}
+			content = content + "<div class='ed-item base-100 "+ classShow +"' id='answer-"+i+"'>"+
+			"<p>"+ preguntas[i] +"</p>"+
+			"<textarea name='response' id='response-"+ i+ "' cols='30' rows='10'></textarea>"+
+			"<textarea name='' id='response-"+ i +"-2' cols='30' rows='10' class='display-none'></textarea>"+
+			"<p class='suggestion-"+ i +"'></p>"+
+			"<p id='suggestion-final'></p>"+
+        "<button data-answer = '"+ i +"' class = 'answer-trigger' onclick=listen("+i+")>Responder</button>"+
+        "<button data-next = '"+cont+"'class = 'next-trigger' onclick='next("+cont+","+count+")'>Siguiente</button>"+
+        "</div>";
+        cont ++;
+			/*
 			f = document.createElement("fieldset");
 			f.setAttribute('class','question');
 			f.innerHTML = content;
 			container.appendChild(f);
-		}	
-		container.appendChild(button);	
+			*/
+		}
+			content = content + "<div id='final' class='ed-item base-100 display-none'>"+
+			"<h2>Retroalimentación final para salir del simulador</h2>"+ 
+			"<p>Ya hemos terminado la evaluación del curso. Te sugiero investigar sobre los temas que estudiaste o repasar aquellos en los que aun deseas redefinir conceptos. De ahora en adelante, será tu práctica la que te hará un empresario exitoso, siempre y cuando busques donde nadie busque y cultives tu inteligencia emocional. ¡Gracias por tu paciencia y bondad por querer aprender!</p>"+
+			"</div>";	
+			container[0].innerHTML = content;	
 	},
 	"getResponse": function (ta){ //This method is the "core" project.
 		/*
 		console.log("Está entrando en getResponse");
         */
-        console.log(ta);
         //totalAnswers = document.getElementsByClassName('question');
     	var answer= [];
     	var b = [];

@@ -1,39 +1,60 @@
 var cont = 0;
 var button_next;
 var button = document.getElementsByClassName('answer-trigger');
-button[0].addEventListener("click", function(e){ 
-    e.preventDefault();
-    var data = button[0].getAttribute("data-answer");
+function listen(idquestion){ 
+    var tenper = true;
+    var data = idquestion;//button[0].getAttribute("data-answer");
     var answer = document.querySelector("#response-" + data).value;
     if(cont > 0){
         answer = document.querySelector("#response-" + data + "-2").value;
     }
-    if(answer.toLowerCase() == repuesta_correcta[data].toLowerCase()){
-        document.getElementsByClassName("suggestion-" + data)[0].innerHTML = "Tu respuesta es cercana a la acertada y también es válida. Te sugiero asumir esta respuesta para cuando necesites definir el tema que ahora mismo acabas de asimilar. ¡Continua con la evaluación o descansa, si lo prefieres!";
+    if(answer.toLowerCase() == repuestas_correctas[data].toLowerCase()){
+        document.getElementsByClassName("suggestion-" + data)[0].innerHTML = sugerencia_segunda_respuesta[data] + "<br><br>" + retroalimentacion_final[data];//"Tu respuesta es cercana a la acertada y también es válida. Te sugiero asumir esta respuesta para cuando necesites definir el tema que ahora mismo acabas de asimilar. ¡Continua con la evaluación o descansa, si lo prefieres!";
+        return true;
     }else{
         //console.log(palabras_claves[data].length);
         for (var i = 0; i < palabras_claves[data].length; i++) {
             if(functions.validateWord(answer, palabras_claves[data][i])){
+               if(cont == 1){
+                    document.getElementsByClassName("suggestion-" + data)[0].innerHTML = "Bien, esa respuesta se acerca a lo que debes saber sobre lo que se te pregunta. "+ retroalimentacion_parcial[data]+"<br><br>" + 
+                        sugerencia_segunda_respuesta[data]+"<br><br>"+ 
+                        retroalimentacion_final[data];
+                    cont = 0; 
+                    return true;
+               }else{
                document.getElementsByClassName("suggestion-" + data)[0].innerHTML = "En esta respuesta te sugiero releer el contenido del tema anterior, aunque tienes elementos claros otros no los tienes, pues algunas cosas que dices en ella no son acertadas. Enfoca tus criterios y mejora tu conocimiento del tema. ¡Detén la evaluación ahora mismo y vuelve a los contenidos, para luego regresar aquí!"; 
                 functions.disabled(data);
                 functions.showElement("response-"+data+"-2");
                 cont = 1;
-                return false;
+                return true;
+               }
+                tenper = false;
+
             }
+
         }
+       
 
        
     }
-});
-
-
-button_next = document.getElementsByClassName('next-trigger');
-button_next[0].addEventListener("click", function(e){ 
-    var data = button_next[0].getAttribute("data-next");
+    if(tenper == true){
+        document.getElementsByClassName("suggestion-" + data)[0].innerHTML="Definitivamente te sugiero que regreses tan pronto puedas ,a los contenidos y estudia con atención cada tema, una vez hayas estudiado con cuidado los contenidos, regresa a esta evaluación.";
+    }
+}
+function next (data, count){ 
+    console.log(data);
+    //var data = button_next[0].getAttribute("data-next");
     //var data_ant = button[0].getAttribute("data-answer");
-    functions.hideElement("answer-" + parseInt(data-1));
+    if(data < count+1){    
+    functions.hideElement("answer-" + (data-1));
     functions.showElement("answer-" + data);
-});
+    }else{
+        functions.hideElement("answer-"+(data-1));
+        functions.showElement("final");
+    }
+    /*
+    */
+};
 
 
  /*   
